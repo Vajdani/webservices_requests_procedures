@@ -1,0 +1,16 @@
+body {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+div {
+    margin-bottom: 5px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+input[type=text] {
+    margin-bottom: 5px;
+}

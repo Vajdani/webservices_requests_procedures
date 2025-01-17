@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webservices</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="ClearOutput()" id="clearOutput" style="display: none;">Clear output</button>
+    <p id="output"></p>
+
+    <div>
+        <p>Get all procedures</p>
+        <button onclick="GetAll()">Run command</button>
+    </div>
+
+    <div>
+        <p>Create new procedure</p>
+
+        <table id="table">
+            <tr>
+                <td><label for="uuid">UUID</label></td>
+                <td><input type="text" name="uuid" id="uuid"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Name</label></td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="version">Version</label></td>
+                <td><input type="text" name="version" id="version"></td>
+            </tr>
+            <tr>
+                <td><label for="description">Description</label></td>
+                <td><input type="text" name="description" id="description"></td>
+            </tr>
+            <tr>
+                <td>Checks list:</td>
+                <td><button onclick="AddCheck()">+</button> <button onclick="RemoveCheck()">–</button></td>
+            </tr>
+            <tr id="checks_tr_1">
+                <td><input type="text" name="checks_1" id="checks_1"></td>
+            </tr>
+        </table>
+
+        <button onclick="CreateNew()">Run command</button>
+    </div>
+
+    <div>
+        <p>Get procedure by id</p>
+        <input type="text" name="id_get" id="id_get">
+        <br>
+        <button onclick="GetById()">Run command</button>
+    </div>
+
+    <div>
+        <p>Update procedure by id</p>
+        <input type="text" name="id_put" id="id_put">
+        <br>
+        <textarea name="id_put_body" id="id_put_body" cols="30" rows="10" spellcheck="false"></textarea>
+        <br>
+        <button onclick="PutById()">Run command</button>
+    </div>
+
+    <div>
+        <p>Delete procedure by id</p>
+        <input type="text" name="id_delete" id="id_delete">
+        <br>
+        <button onclick="DeleteById()">Run command</button>
+    </div>
+</body>
+</html>
