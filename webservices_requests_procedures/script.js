@@ -149,7 +149,7 @@ async function GetCheckById(uuid) {
     return check
 }
 
-function CreateNewCheck(uuid) {
+function CreateNewCheckData(uuid) {
     return {
         "uuid": uuid,
         "name": "sum_is_zero",
@@ -165,18 +165,22 @@ function CreateNewCheck(uuid) {
     }
 }
 
+async function CreateNewCheck(uuid) {
+    await fetch("http://localhost:8080/checks/", {
+        method: "Post",
+        body: JSON.stringify(CreateNewCheckData(uuid)),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+}
+
 async function CreateChecksIfNotExist(procedure) {
     for (let index = 0; index < procedure.checks.length; index++) {
         let uuid = procedure.checks[index]
         await GetCheckById(uuid).then(async (data) => {
             if (data.status == -1) {
-                await fetch("http://localhost:8080/checks/", {
-                    method: "Post",
-                    body: JSON.stringify(CreateNewCheck(uuid)),
-                    headers: {
-                        "Content-type": "application/json; charset=UTF-8"
-                    }
-                })
+                await CreateNewCheck(uuid)
             }
         })
     }
